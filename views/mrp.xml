@@ -1,0 +1,17 @@
+<openerp>
+  <data>
+    <record id="bibo_mrp_template_only_form_view" model="ir.ui.view">
+            <field name="name">bibo.mrp.template.only.form.view</field>
+            <field name="model">mrp.workorder</field>
+            <field name="inherit_id" ref="mrp.mrp_production_workcenter_form_view_inherit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet/notebook/page/group/group//field[@name='name']" position="after">
+                    <field name="board_id"/>
+                </xpath>
+              <!--  <xpath expr="//sheet/group/group//field[@name='is_produced']" position="after">
+                    <field name="payment"/>
+                </xpath>-->
+            </field>
+        </record>
+  </data>
+</openerp>

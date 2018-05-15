@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_board_line,access_board_line,model_board_line,,1,1,1,1
+access_board,access_board,model_board,,1,1,1,1
+access_mrp_report_production,access_mrp_report_production,model_mrp_report_production,,1,1,1,1
+access_mrp_report_production_line,access_mrp_report_production_line,model_mrp_report_production_line,,1,1,1,1

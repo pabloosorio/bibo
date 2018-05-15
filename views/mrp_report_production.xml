@@ -1,0 +1,112 @@
+<openerp>
+  <data>
+<record id="view_mrpreportproduction_search" model="ir.ui.view">
+            <field name="name">view.mrpreportproduction.search</field>
+            <field name="model">mrp.report.production</field>
+            <field name="arch" type="xml">
+                <search string="Reporte de operaciones">
+                    <field name="name"/>
+                    <newline/>
+                    <group expand="0" string="Group By...">
+                         <filter string="Mesas" icon="terp-partner" domain="[]" context="{'group_by':'name'}"/>
+                        <separator orientation="vertical"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+
+        <record id="view_mrpreportproduction_form" model="ir.ui.view">
+            <field name="name">view.mrpreportproduction.form</field>
+            <field name="model">mrp.report.production</field>
+            <field name="arch" type="xml">
+                <form string="Reporte de operaciones">
+                  <header>
+                      <button name="action_confirm" states="draft" string="Confirmar" class="o_sale_confirm" type="object" />
+                      <button name="action_pay" states="done" string="Pagado" class="o_sale_confirm" type="object" />
+                      <button name="action_cancel" states="done" string="Cancelar Confirmación" class="o_sale_confirm" type="object" />
+                      <button name="action_cancel" states="pay" string="Cancelar Confirmación" class="o_sale_confirm" type="object" />
+                      <field name="state" widget="statusbar" statusbar_visible="draft,done,pay"/>
+                </header>
+                    <sheet>
+                      <div class="oe_title">
+                        <label string="Empleado"/>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                        <group>
+                            <group>
+                                <field name="date_start"/>
+                            </group>
+                            <group>
+                                <field name="date_finish"/>
+                            </group>
+                        </group>
+
+                         <notebook>
+                            <page name="production_lines" string="Empleados">
+                              <field name="production_lines" widget="one2many_list">
+                               <tree editable="bottom">
+                                  <field name = "mrp_production_id" />
+                                   <field name = "operation_id" />
+                                   <field name = "qty" />
+                                   <field name = "precio_unit" />
+                                   <field name = "total" />
+                               </tree>
+                              </field>
+                              </page>
+
+                         </notebook>
+                        <group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">
+                                <field name="subtotal" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                            </group>
+
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_mrpreportproduction_tree" model="ir.ui.view">
+            <field name="name">view.mrpreportproduction.tree</field>
+            <field name="model">mrp.report.production</field>
+            <field name="arch" type="xml">
+                <tree string="Reporte de operaciones">
+                    <field name="name"/>
+                    <field name="date_start"/>
+                    <field name="date_finish"/>
+                    <field name="piezass" />
+                    <field name="subtotal"/>
+
+                </tree>
+            </field>
+        </record>
+    <record model="ir.ui.view" id="view_mrp_report_production_pivot">
+            <field name="name">mrp.report.production.pivot</field>
+            <field name="model">mrp.report.production</field>
+            <field name="arch" type="xml">
+                <pivot string="Sales Orders">
+                    <field name="name" type="row"/>
+                    <field name="subtotal" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+
+
+        <record id="action_mrpreportproduction" model="ir.actions.act_window">
+            <field name="name">Reporte de operaciones</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mrp.report.production</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,pivot</field>
+        </record>
+
+
+        <menuitem parent="mrp.menu_mrp_reporting" action="action_mrpreportproduction"
+                  id="menu_mrpreportproduction" sequence="2"
+           />
+
+
+
+  </data>
+</openerp>

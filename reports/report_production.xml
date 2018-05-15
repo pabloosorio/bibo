@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template id="report_production_document">
+        <t t-call="report.html_container">
+            <t t-call="report.external_layout">
+                <t t-set="o" t-value="o" />
+                <div class="page">
+
+                    <b>Empleado:</b><span t-field="o.name.name"/> <br/>
+                    <b>Reporte del :</b><span t-field="o.date_start"/> al <span t-field="o.date_finish"/><br/>
+                    <table class="table table-condensed mt48">
+                       
+                        <thead>
+                            <tr>
+                                <th><strong>Orden de Producción</strong></th>
+                                <th><strong>Operación</strong></th>
+                                <th><strong>Piezas</strong></th>
+                                <th><strong>Precio por piezas</strong></th>
+                                <th><strong>Total</strong></th>
+                            
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="o.production_lines" t-as="l">
+                                <td><span t-field="l.mrp_production_id"/></td>
+                                <td><span t-field="l.operation_id"/></td>
+                                <td><span t-field="l.qty"/></td>
+                                <td><span t-field="l.precio_unit"/></td>
+                                <td><span t-field="l.total"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="row" name="total">
+                <div class="col-xs-4 pull-right">
+                    <table class="table table-condensed">
+                        <tr class="border-black">
+                            <td><strong>Subtotal</strong></td>
+                            <td class="text-right">
+                                <span t-field="o.subtotal"/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+                   
+                </div>
+            </t>
+         </t>
+    </template>
+
+    <template id="report_production">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="bibo.report_production_document" />
+        </t>
+    </template>
+
+
+
+<report
+            string="Reporte Producción"
+            id="action_report_production"
+            model="mrp.report.production"
+            report_type="qweb-pdf"
+            name="bibo.report_production"
+            file="bibo.report_production"
+
+
+/>
+</odoo>

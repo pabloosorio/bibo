@@ -1,0 +1,110 @@
+<openerp>
+  <data>
+<record id="view_board_search" model="ir.ui.view">
+            <field name="name">view.boar.search</field>
+            <field name="model">board</field>
+            <field name="arch" type="xml">
+                <search string="Mesas">
+                    <field name="name"/>
+                    <newline/>
+                    <group expand="0" string="Group By...">
+                         <filter string="Mesas" icon="terp-partner" domain="[]" context="{'group_by':'name'}"/>
+                        <separator orientation="vertical"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+
+        <record id="view_board_form" model="ir.ui.view">
+            <field name="name">view.board.form</field>
+            <field name="model">board</field>
+            <field name="arch" type="xml">
+                <form string="Mesas">
+                  <header>
+                </header>
+                    <sheet>
+                      <div class="oe_title">
+                        <label string="Mesa"/>
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </div>
+                         <notebook>
+                            <page name="table_lines" string="Empleados">
+                              <field name="table_lines" widget="one2many_list">
+                               <tree editable="bottom">
+                                  <field name = "employee_id" />
+                               </tree>
+                              </field>
+                              </page>
+
+                         </notebook>
+
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_board_tree" model="ir.ui.view">
+            <field name="name">view.board.tree</field>
+            <field name="model">board</field>
+            <field name="arch" type="xml">
+                <tree string="Mesas">
+                            <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+        <record id="action_board" model="ir.actions.act_window">
+            <field name="name">Mesas</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">board</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem parent="mrp.menu_mrp_configuration" action="action_board"
+                  id="menu_board" sequence="2"
+           />
+
+
+
+        <record id="bibo_add_mesa_default_view" model="ir.ui.view">
+            <field name="name">bibo.mesa.default.form.view</field>
+            <field name="model">mrp.workcenter</field>
+            <field name="inherit_id" ref="mrp.mrp_workcenter_view"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='name']" position="after">
+
+                    <field name="mesa_default"/>
+
+                </xpath>
+
+            </field>
+        </record>
+<!--
+
+        <record id="bibo_replace_button_plan_view" model="ir.ui.view">
+            <field name="name">bibo.plan_button.form.view</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='button_plan']" position="after">
+                    <button name="button_plan2" attrs="{'invisible': ['|', ('state', '!=', 'confirmed'), ('routing_id', '=', False),'|', ('date_planned_start_wo', '!=', False), ('date_planned_finished_wo', '!=', False)]}" type="object" string="Plan2" class="oe_highlight">
+                    </button>
+                </xpath>
+                <xpath expr="//button[@name='button_plan']" position="replace">
+                    <button name="button_plan" invisible="1" type="object" string="Plan2" class="oe_highlight"/>
+                </xpath>
+            </field>
+        </record>-->
+
+
+
+  </data>
+</openerp>
