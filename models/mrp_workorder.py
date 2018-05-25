@@ -122,7 +122,7 @@ class MrpProduction(models.Model):
                 'name': operation.name,
                 'production_id': self.id,
                 'workcenter_id': operation.workcenter_id.id,
-                'board_id': operation.workcenter_id.mesa_default.id,
+                'board_id': operation.mesa_defecto.id,
                 'operation_id': operation.id,
                 'duration_expected': duration_expected,
                 'state': len(workorders) == 0 and 'ready' or 'pending',
