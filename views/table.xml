@@ -72,39 +72,5 @@
            />
 
 
-
-        <record id="bibo_add_mesa_default_view" model="ir.ui.view">
-            <field name="name">bibo.mesa.default.form.view</field>
-            <field name="model">mrp.workcenter</field>
-            <field name="inherit_id" ref="mrp.mrp_workcenter_view"/>
-            <field name="arch" type="xml">
-
-                <xpath expr="//field[@name='name']" position="after">
-
-                    <field name="mesa_default"/>
-
-                </xpath>
-
-            </field>
-        </record>
-<!--
-
-        <record id="bibo_replace_button_plan_view" model="ir.ui.view">
-            <field name="name">bibo.plan_button.form.view</field>
-            <field name="model">mrp.production</field>
-            <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
-            <field name="arch" type="xml">
-                <xpath expr="//button[@name='button_plan']" position="after">
-                    <button name="button_plan2" attrs="{'invisible': ['|', ('state', '!=', 'confirmed'), ('routing_id', '=', False),'|', ('date_planned_start_wo', '!=', False), ('date_planned_finished_wo', '!=', False)]}" type="object" string="Plan2" class="oe_highlight">
-                    </button>
-                </xpath>
-                <xpath expr="//button[@name='button_plan']" position="replace">
-                    <button name="button_plan" invisible="1" type="object" string="Plan2" class="oe_highlight"/>
-                </xpath>
-            </field>
-        </record>-->
-
-
-
   </data>
 </openerp>
