@@ -32,14 +32,14 @@ class MrpWorkorder(models.Model):
             #           'FRIDAY': '5', 'SATURDAY': '6', 'SUNDAY': '7'}
             #dicdias2 = {'MONDAY': '7', 'TUESDAY': '6', 'WEDNESDAY': '5', 'THURSDAY': '4', \
             #            'FRIDAY': '3', 'SATURDAY': '2', 'SUNDAY': '1'}
-            dicdias = {'MONDAY': '5', 'TUESDAY': '6', 'WEDNESDAY': '7', 'THURSDAY': '1', \
-                       'FRIDAY': '2', 'SATURDAY': '3', 'SUNDAY': '4'}
-            dicdias2 = {'MONDAY': '3', 'TUESDAY': '2', 'WEDNESDAY': '1', 'THURSDAY': '7', \
-                        'FRIDAY': '6', 'SATURDAY': '5', 'SUNDAY': '4'}
-            #dicdias = {'JUEVES': '1', 'VIERNES': '2', 'SABADO': '3','DOMINGO': '4', \
-            #           'LUNES': '5', 'MARTES': '6', 'MIERCOLES': '7'}
-            #dicdias2 =  {'JUEVES': '7', 'VIERNES': '6', 'SABADO': '5','DOMINGO': '4', \
-            #           'LUNES': '3', 'MARTES': '2', 'MIERCOLES': '1'}
+            #dicdias = {'MONDAY': '5', 'TUESDAY': '6', 'WEDNESDAY': '7', 'THURSDAY': '1', \
+            #           'FRIDAY': '2', 'SATURDAY': '3', 'SUNDAY': '4'}
+            #dicdias2 = {'MONDAY': '3', 'TUESDAY': '2', 'WEDNESDAY': '1', 'THURSDAY': '7', \
+            #            'FRIDAY': '6', 'SATURDAY': '5', 'SUNDAY': '4'}
+            dicdias = {'JUEVES': '1', 'VIERNES': '2', 'SABADO': '3','DOMINGO': '4', \
+                       'LUNES': '5', 'MARTES': '6', 'MIERCOLES': '7'}
+            dicdias2 =  {'JUEVES': '7', 'VIERNES': '6', 'SABADO': '5','DOMINGO': '4', \
+                       'LUNES': '3', 'MARTES': '2', 'MIERCOLES': '1'}
             anho = x.year
             mes = x.month
             dia = x.day
