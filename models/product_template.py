@@ -38,7 +38,7 @@ class DebtCustomerReport(models.AbstractModel):
 
 class Product(models.Model):
     _inherit = "product.product"
-    stock_sventa = fields.Float(string="Stock menos venta",digits=dp.get_precision('Product Unit of Measure'))
+    stock_sventa = fields.Float(string="Material Disponible",digits=dp.get_precision('Product Unit of Measure'))
 
     @api.depends('stock_quant_ids', 'stock_move_ids')
     def _compute_quantities(self):
